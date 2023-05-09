@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkpoint</title>
+</head>
+<body>
+    <h1>Checkpoint</h1>
+</body>
+<script>
+    class Film{
+        constructor(title,id,produttore,direttore,url){
+           this.title = title, 
+           this.id = id,
+           this.produttore = produttore,
+           this.direttore = direttore,
+           this.url = url; 
+        }
+    }
+
+    function getNewFilm(data){
+        data.forEach(element => {
+           console.log(new Film(element.title, element.episode_id, element.producer, element.director, element.url))})
+        };   
+
+
+    fetch("https://swapi.dev/api/films/")
+    .then((res) => res.json())
+    .then((json) => json.results)
+    .then(getNewFilm)
+    .then(console.log)
+</script>
+</html>
